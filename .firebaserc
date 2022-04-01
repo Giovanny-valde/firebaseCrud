@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-1-9eac5": {
+      "hosting": {
+        "firebaseCrud": [
+          "fir-1-9eac5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-1-9eac5"
+  }
+}
