@@ -1,0 +1,27 @@
+<br>
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+  <div class=" form-group">
+    <label for="hora">Hora</label><br>
+    <input type="text" class="form-control" name="hora" #hora="ngModel" [(ngModel)]="service.select.hora"
+        placeholder="Add A hora">
+  </div>
+  <div class="form-group">
+    <label for="valor">Valor</label><br>
+    <input type="text" class="form-control" name="valor" #valor="ngModel" [(ngModel)]="service.select.valor"
+      placeholder="Add A valor">
+  </div>
+  <div class="form-group">
+    <label for="count">Count</label><br>
+    <input type="text" class="form-control" name="count" #count="ngModel" [(ngModel)]="service.select.count"
+      placeholder="Add A count">
+  </div>
+  <br>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">
+      <i class="fas fa-plus-circle"></i> Agregar o Actualizar
+    </button>
+     <button class="btn btn-secondary" type="button" (click)="remove(productForm)">
+       <i class="fas fa-sync-alt"></i> Eliminar
+    </button> 
+  </div>
+</form>

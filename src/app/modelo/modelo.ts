@@ -1,4 +1,5 @@
 export class Modelo {
-    count! : string;
-    luz! : string;
+    hora! : string;
+    count! : number;
+    valor! : number;
 }

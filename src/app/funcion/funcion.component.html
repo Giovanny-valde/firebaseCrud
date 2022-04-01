@@ -1,7 +1,30 @@
 <H1>I AM HAPPY</H1>
-<ul>
+<p>Agregar :  rellene el formulario(no repetir la hora) y presione guardar <br>
+Modificar : presione seleccionar , rellene el formulario(no tocar la hora) y presione modificar <br>
+Eliminar : presione seleccionar y presione eliminar</p> 
+<table border="2px">
+  <thead>
+    <tr>
+      <th>Hora</th>
+      <th>valor</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items ">
+      <td>{{item.hora}}</td>
+      <td>{{item.valor}}</td>
+      <td>{{item.count}}</td>
+      <td>
+        <button (click)="updateItem(item)">seleccionar</button>
+      </td>
+    </tr>
+</table>
+<app-unit-funcion></app-unit-funcion>
+<!-- <ul>
     <li *ngFor="let item of items">
-      item: {{item | json}}
+      {{item | json}}
     </li>
-</ul>
+</ul> -->
   <!-- {{items | json}} -->
+  <!-- {{a | json}} -->
