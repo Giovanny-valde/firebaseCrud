@@ -25,22 +25,22 @@ export class UnitFuncionComponent implements OnInit {
   
   onSubmit(productForm: NgForm)
   {
-    let item = productForm.value;
-    console.log("item == ",item.count);
+    let item : Modelo = productForm.value;
     const db = getDatabase();
-        set(ref(db, 'as/aaasta/' + item.hora), {
-          count: item.count,
-          valor: item.valor
+        set(ref(db, 'UsersData/LCKSCzPK0TRN1LrXx8V28iQdJYz1/' + item.id), {
+          RFID : item.RFID,
+          Fecha : item.Fecha,
+          Luz : item.Luz
         });
         this.resetForm(productForm);
   }
 
 
-  // remove(item: any) {
-  //     //  console.log("remove == ",item.hora);
-  //       const db = getDatabase();
-  //    remove(ref(db, 'as/aaasta/' + item.value.hora));
-  // }
+  remove(item: any) {
+      //  console.log("remove == ",item.hora);
+        const db = getDatabase();
+     remove(ref(db, 'UsersData/LCKSCzPK0TRN1LrXx8V28iQdJYz1/' + item.value.id));
+  }
 
   resetForm(productForm?: NgForm)
   {

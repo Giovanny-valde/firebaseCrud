@@ -33,7 +33,7 @@ export class FuncionComponent implements OnInit {
         x["id"] = element.key;
         
         console.log(x);
-        this.items.push(x as any);
+        this.items.push(x as Modelo);
       });
     });
 
