@@ -1,22 +1,23 @@
-<H1>I AM HAPPY</H1>
-<p>Agregar :  rellene el formulario(no repetir la hora) y presione guardar <br>
-Modificar : presione seleccionar , rellene el formulario(no tocar la hora) y presione modificar <br>
-Eliminar : presione seleccionar y presione eliminar</p> 
+<H1> DATA </H1>
 <table border="2px">
   <thead>
     <tr>
-      <th>Hora</th>
-      <th>valor</th>
-      <th>count</th>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Luz</th>
+      <th>RFID</th>
+      <th colspan="2">acciones</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of items ">
-      <td>{{item.hora}}</td>
-      <td>{{item.valor}}</td>
-      <td>{{item.count}}</td>
+      <td>{{item.id}}</td>
+      <td>{{item.Fecha}}</td>
+      <td>{{item.Luz}}</td>
+      <td>{{item.RFID}}</td>
       <td>
-        <button (click)="updateItem(item)">seleccionar</button>
+        <button (click)="updateItem(item)">Actualizar</button>
+        <button (click)="remove(item)"> Eliminar</button>
       </td>
     </tr>
 </table>

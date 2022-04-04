@@ -6,7 +6,7 @@ import {  provideDatabase } from '@angular/fire/database';
 import { initializeApp, getApp , provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
 import { FuncionComponent } from './funcion/funcion.component';
-import { DatabaseModule } from '@angular/fire/database';
+// import { DatabaseModule } from '@angular/fire/database';
 import { getDatabase } from 'firebase/database';
 import { getFirestore } from 'firebase/firestore';
 import { provideFirestore } from '@angular/fire/firestore';
@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,  
     AppRoutingModule,
-    DatabaseModule,
+    // DatabaseModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideDatabase(() => getDatabase()),

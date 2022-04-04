@@ -1,5 +1,7 @@
 export class Modelo {
-    hora! : string;
-    count! : number;
-    valor! : number;
+    id!: string;
+    Fecha! : string;
+    RFID! : number;
+    Luz! : number;
+
 }

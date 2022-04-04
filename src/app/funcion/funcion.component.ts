@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getDatabase,  ref, onValue} from 'firebase/database';
+import { getDatabase,  ref, onValue, remove} from 'firebase/database';
 import {  Firestore } from '@angular/fire/firestore';
 import {  Observable } from 'rxjs';
 import { ServiceService } from '../service/service.service';
@@ -23,13 +23,17 @@ export class FuncionComponent implements OnInit {
 
     const daba = getDatabase();   
 
-    const starCountRef = ref(daba, 'as/aaasta');
+    const starCountRef = ref(daba, 'UsersData/LCKSCzPK0TRN1LrXx8V28iQdJYz1/');
     onValue(starCountRef, (snapshot) => {
+      // console.log(snapshot.val())s;
       this.items = [];
       let data  = snapshot.forEach((element : any) => {
         let x = element.val();
-        x["hora"] = element.key;
-        this.items.push(x as Modelo);
+        console.log(x);
+        x["id"] = element.key;
+        
+        console.log(x);
+        this.items.push(x as any);
       });
     });
 
@@ -38,6 +42,22 @@ export class FuncionComponent implements OnInit {
   updateItem(item: Modelo) {
     this.db.select = Object.assign({}, item);
     this.db.update();
+  }
+
+  
+  remove(item: any) {
+    //  console.log("remove == ",item.hora);
+      const db = getDatabase();
+      let a = confirm("Esta seguro de eliminar el registro?");
+      if(a)
+      {
+        remove(ref(db, 'as/aaasta/' + item.hora));
+        alert("Registro eliminado");
+      }
+      else{
+        alert("Registro no eliminado");
+      }
+      //  remove(ref(db, 'as/aaasta/' + item.value.hora));
   }
 
     // this.db.getProducts().snapshotChanges().subscribe((data : any) => {

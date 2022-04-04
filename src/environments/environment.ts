@@ -16,15 +16,23 @@ export const environment = {
   // },
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyDxUjwmV1ZIJvTOmn06n_c28sSQSxIuIzo",
-    authDomain: "fir-1-9eac5.firebaseapp.com",
-    databaseURL: "https://fir-1-9eac5-default-rtdb.firebaseio.com",
-    projectId: "fir-1-9eac5",
-    storageBucket: "fir-1-9eac5.appspot.com",
-    messagingSenderId: "786183420866",
-    appId: "1:786183420866:web:26cb7544719f7e718b745b",
-    measurementId: "G-NM9YB9S5WQ"
-}
+    apiKey: "AIzaSyC6aCHYC4twqulPD28JB4Kiwr3b4Dm0Bx0",
+
+    authDomain: "iot-ost.firebaseapp.com",
+
+    databaseURL: "https://iot-ost-default-rtdb.firebaseio.com",
+
+    projectId: "iot-ost",
+
+    storageBucket: "iot-ost.appspot.com",
+
+    messagingSenderId: "97701547361",
+
+    appId: "1:97701547361:web:8f22e8163b9ce5c98ec920",
+
+    measurementId: "G-0YZ7V0VYEH"
+},
+
 };
 
 /*
