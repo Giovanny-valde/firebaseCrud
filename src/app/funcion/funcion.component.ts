@@ -4,6 +4,9 @@ import {  Firestore } from '@angular/fire/firestore';
 import {  Observable } from 'rxjs';
 import { ServiceService } from '../service/service.service';
 import { Modelo } from '../modelo/modelo';
+import { keepUnstableUntilFirst } from '@angular/fire';
+import { keyframes } from '@angular/animations';
+import { object } from 'rxfire/database';
 // import { get } from 'http';
 
 @Component({
@@ -15,6 +18,9 @@ export class FuncionComponent implements OnInit {
 
   item$: Observable<any[]> = new Observable();
   items : any[] = [];
+  total = 0;
+  empleados = 0;
+  clientes = 0;
   constructor( dbs : Firestore , public  db : ServiceService) {
 
   }
@@ -23,18 +29,45 @@ export class FuncionComponent implements OnInit {
 
     const daba = getDatabase();   
 
-    const starCountRef = ref(daba, 'UsersData/LCKSCzPK0TRN1LrXx8V28iQdJYz1/');
+    const starCountRef = ref(daba, 'UsersData/Ingresos/');
     onValue(starCountRef, (snapshot) => {
       // console.log(snapshot.val())s;
       this.items = [];
+      let x;
+       this.total = 0;
+       this.empleados = 0;
+       this.clientes = 0;
       let data  = snapshot.forEach((element : any) => {
-        let x = element.val();
-        console.log(x);
-        x["id"] = element.key;
+        // console.log(element.val());
+        x = element.val();
         
-        console.log(x);
-        this.items.push(x as Modelo);
+        let llave = element.key
+
+        var expresionRegular = /\s*_\s*/;
+        var resultado = llave.split(expresionRegular);
+        // console.log(resultado[0]);
+        let date = new Date();
+        let mes = date.getMonth()>10 ? (date.getMonth()+1 ): "0"+(date.getMonth()+1);
+        // console.log("fecha---");
+        // let datee = date.getDate() + "-" + mes + "-" + date.getFullYear();
+         let datee = 20 + "-" + mes + "-" + date.getFullYear();
+        // console.log(fecha);
+
+        // console.log(llave);
+        if(resultado[0] == datee)
+        {
+          this.total++;
+          x.Empleado == 1 ? this.empleados++ : this.clientes++; 
+          console.log(x);
+          this.items.push(x);
+        }
+
       });
+      
+      console.log("total",this.total);
+      console.log("empleados",this.empleados);
+      console.log("clientes",this.clientes);
+     
     });
 
   }

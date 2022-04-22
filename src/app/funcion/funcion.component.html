@@ -1,31 +1,32 @@
-<H1> DATA </H1>
-<table border="2px">
+
+<table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Fecha</th>
-      <th>Luz</th>
-      <th>RFID</th>
-      <th colspan="2">acciones</th>
+      <th><h2>Total</h2></th>
+      <th><h2>Empleado</h2> </th>
+      <th><h2>Cliente</h2></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items ">
-      <td>{{item.id}}</td>
-      <td>{{item.Fecha}}</td>
-      <td>{{item.Luz}}</td>
-      <td>{{item.RFID}}</td>
+    <tr>
       <td>
-        <button (click)="updateItem(item)">Actualizar</button>
-        <button (click)="remove(item)"> Eliminar</button>
+        <div class="circulo total">
+          
+          <h1>
+            <br>{{total}}</h1>
+        </div>
+      </td>
+      <td>
+        <div class="circulo empleado">
+          
+          <h1><br>{{empleados}}</h1>
+        </div>
+      </td>
+      <td>
+        <div class="circulo cliente">
+         
+          <h1><br>{{clientes}}</h1>
+        </div>
       </td>
     </tr>
 </table>
-<app-unit-funcion></app-unit-funcion>
-<!-- <ul>
-    <li *ngFor="let item of items">
-      {{item | json}}
-    </li>
-</ul> -->
-  <!-- {{items | json}} -->
-  <!-- {{a | json}} -->
