@@ -4,8 +4,10 @@ import { FuncionComponent } from './funcion/funcion.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
+
   { path: '', component: RegisterComponent },
-  // { path: '', component:FuncionComponent , pathMatch: 'full' },
+  { path: 'dashboard', component:FuncionComponent , pathMatch: 'full' },
+
 ];
 
 @NgModule({

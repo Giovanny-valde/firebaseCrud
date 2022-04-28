@@ -12,6 +12,9 @@ import { ServiceService } from '../service/service.service';
 export class RegisterComponent implements OnInit {
 
   Tarjetas  : any[] = [] ;
+  Clientes : any[] = [];
+  Caja : any[] = [];
+  ClientesEnCaja : any[] = [];
 
   formCliente! : FormGroup;
   constructor( dbs : Firestore , public  db : ServiceService ,public fb : FormBuilder) {
@@ -27,6 +30,9 @@ export class RegisterComponent implements OnInit {
     
     //OBTENER CLIENTES
     this.ObtenerClientes(daba);
+
+    //OBTENER CAJA
+    this.ObtenerCaja(daba);
  
   }
 
@@ -38,24 +44,59 @@ export class RegisterComponent implements OnInit {
       let x;
       let data  = snapshot.forEach((element : any) => {
         x = element.val();
-        console.log(x);
-        this.Tarjetas.push(x.Id);
+        let dato = { key : element.key , ...x }; 
+        this.Tarjetas.push(dato);
       });
+
+      console.log("TARJETAS")
+      console.log(this.Tarjetas)
     });
   }
 
   public ObtenerClientes( daba : any){
+
     const starCountRef2 = ref(daba, 'UsersData/Clientes/');
     onValue(starCountRef2, (snapshot) => {
+      this.Clientes = [];
       let data  = snapshot.forEach((element : any) => {
         let x = element.val();
-        console.log(x);
-      }
-      );
+        let dato = { key : element.key , ...x };
+        this.Clientes.push(dato);
+      });
+      console.log("CLIENTES")
+      console.log(this.Clientes)
+      this.ObtenerClienteDeCaja();
     });
   }
       
+  public ObtenerCaja( daba : any){
+    const starCountRef = ref(daba, 'UsersData/Caja/');
+    onValue(starCountRef, (snapshot) => {
+      this.Caja = [];
+      let x;
+      let data  = snapshot.forEach((element : any) => {
+        // console.log(element.val())
+        x = element.val();
+        let dato = { key : element.key , ...x }; 
+        this.Caja.push(dato);
+      });
+      console.log("CAJA")
+      console.log(this.Caja)
+      this.ObtenerClienteDeCaja();
+    });
+  }
 
+  public ObtenerClienteDeCaja(){
+    this.ClientesEnCaja = [];
+    for(let i = 0 ; i < this.Caja.length ; i++){
+      for(let j = 0 ; j < this.Clientes.length ; j++){
+      if(this.Caja[i].Cliente == this.Clientes[j].key){
+          this.ClientesEnCaja.push({tarjeta : this.Caja[i].Tarjeta, ...this.Clientes[j]});
+      }
+    }
+  }
+  // console.log(this.ClientesEnCaja)
+}
 
   public guardar(){ 
     let data = this.formCliente.value;
@@ -71,24 +112,26 @@ export class RegisterComponent implements OnInit {
       TipoDocumento : data.tipoDocumento,
     });
 
-    //AGREGAR TARJETA
+    //AGREGAR CAJA
     let date = this.ObtenerFecha();
     set(ref(db,'UsersData/Caja/' +date),{
       Cliente: data.id,
-      FraccionTiempo: data.fraccion,
+      FraccionTiempo: "1",
       Tarjeta : data.tarjeta,
     })
 
+
     this.formCliente.reset();
+
   }
 
   public ObtenerFecha(){
     let date = new Date();
     console.log(date)
-    let mes = date.getMonth()>10 ? (date.getMonth()+1 ): "0"+(date.getMonth()+1);
-    let hour = date.getHours()>10 ? (date.getHours() ): "0"+(date.getHours()+1);
-    let min = date.getMinutes()>10 ? (date.getMinutes() ): "0"+(date.getMinutes()+1);
-    let sec = date.getSeconds()>10 ? (date.getSeconds() ): "0"+(date.getSeconds()+1);
+    let mes = date.getMonth()>10 ? (date.getMonth()+1 ): "0"+(date.getMonth()+1 );
+    let hour = date.getHours()>10 ? (date.getHours() ): "0"+(date.getHours());
+    let min = date.getMinutes()>10 ? ( date.getMinutes() ): "0"+(date.getMinutes());
+    let sec = date.getSeconds()>10 ? ( date.getSeconds() ): "0"+(date.getSeconds() );
     let datee = date.getDate() + "-" + mes + "-" + date.getFullYear() + "_"+ hour + ":" + min + ":" + sec;
     return datee;
   }

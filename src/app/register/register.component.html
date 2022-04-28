@@ -1,41 +1,114 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="dashboard">dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<div class="container">
 <form [formGroup]="formCliente">
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>Tarjeta</th>
-        <th>Id</th>
+        <th>Numero Identificacion</th>
         <th>Direccion</th>
         <th>Email</th>
-        <th>Fecha Nacimiento</th>
-        <th>Nombre</th>
-        <th>Telefono</th>
-        <th>Tipo</th>
-        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-          <select formControlName="tarjeta">
+          <select formControlName="tarjeta" class="form-select">
             <option value="">Selecione</option>
-            <option *ngFor="let f of Tarjetas" [value]="f">{{f}}</option>
+            <option *ngFor="let f of Tarjetas" [value]="f.key">{{f.key}}</option>
           </select>
         </td>
-        <td> <input type="text" formControlName="id"> </td>
-        <td> <input type="text" formControlName="direccion"> </td>
-        <td> <input type="text" formControlName="email"> </td>
-        <td> <input type="text" formControlName="fechaNacimiento"> </td>
-        <td> <input type="text" formControlName="nombre"> </td>
-        <td> <input type="text" formControlName="telefono"> </td>
-        <td> <input type="text" formControlName="tipoDocumento"> </td>
+        <td> <input type="text" formControlName="id" class="form-control"> </td>
+        <td> <input type="text" formControlName="direccion" class="form-control"> </td>
+        <td> <input type="text" formControlName="email" class="form-control"> </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table ">
+    <thead>
+      <tr>
+        <th>Fecha Nacimiento</th>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <input type="date" formControlName="fechaNacimiento" class="form-control"> </td>
+        <td> <input type="text" formControlName="nombre" class="form-control"> </td>
+        <td> <input type="text" formControlName="telefono" class="form-control"> </td>
         <td>
-          <button type="submit" (click)="guardar()">Agregar</button>
+          <select formControlName="tipoDocumento" class="form-select">
+            <option value="">Selecione</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="CC">Cedula de Ciudadania</option>
+            <option value="PA">Pasaporte</option>
+            <option value="CE">Cedula de Extranjeria</option>
+          </select>
         </td>
       </tr>
     </tbody>
   </table>
+  <td>
+    <button type="submit" (click)="guardar()">Agregar</button>
+  </td>
 </form>
-
+<br>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Tarjeta</th>
+      <th>Id</th>
+      <th>Direccion</th>
+      <th>Email</th>
+      <th>Fecha Nacimiento</th>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Tipo</th>
+      <!-- <th>Acciones</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of ClientesEnCaja">
+      <td>{{cliente.tarjeta}}</td>
+      <td>{{cliente.key}}</td>
+      <td>{{cliente.Direccion}}</td>
+      <td>{{cliente.Email}}</td>
+      <td>{{cliente.FechaNacimiento}}</td>
+      <td>{{cliente.Nombre}}</td>
+      <td>{{cliente.Telefono}}</td>
+      <td>{{cliente.TipoDocumento}}</td>
+      <!-- <td>
+                <button (click)="eliminar(cliente.key)">Eliminar</button>
+            </td> -->
+    </tr>
+</table>
+</div>
 
 <!-- <form [formGroup]="formCliente">
     

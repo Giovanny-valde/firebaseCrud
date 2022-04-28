@@ -10,7 +10,9 @@ export class ServiceService {
   starCountRef  : any;
   select = new Modelo();
   
-  constructor() { 
+  constructor(
+    
+  ) { 
     const db = getDatabase();
     this.starCountRef = ref(   db, 'as/aaasta');
     // onValue(starCountRef, (snapshot) => {
