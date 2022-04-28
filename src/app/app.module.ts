@@ -11,17 +11,20 @@ import { getDatabase } from 'firebase/database';
 import { getFirestore } from 'firebase/firestore';
 import { provideFirestore } from '@angular/fire/firestore';
 import { UnitFuncionComponent } from './funcion/unit-funcion/unit-funcion.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     FuncionComponent,
-    UnitFuncionComponent
+    UnitFuncionComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
-    // DatabaseModule,
+    ReactiveFormsModule,
+    // DatabaseModule,we
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideDatabase(() => getDatabase()),

@@ -18,9 +18,9 @@ export class FuncionComponent implements OnInit {
 
   item$: Observable<any[]> = new Observable();
   items : any[] = [];
-  total = 0;
-  empleados = 0;
-  clientes = 0;
+  // total : number = 0;
+  entradas: {total: number, empleados: number, clientes: number} = {total: 0, empleados: 0, clientes: 0};
+  salidas: {total: number, empleados: number, clientes: number} = {total: 0, empleados: 0, clientes: 0};
   constructor( dbs : Firestore , public  db : ServiceService) {
 
   }
@@ -31,43 +31,39 @@ export class FuncionComponent implements OnInit {
 
     const starCountRef = ref(daba, 'UsersData/Ingresos/');
     onValue(starCountRef, (snapshot) => {
-      // console.log(snapshot.val())s;
       this.items = [];
-      let x;
-       this.total = 0;
-       this.empleados = 0;
-       this.clientes = 0;
+       this.entradas = {total: 0, empleados: 0, clientes: 0};
+       this.salidas = {total: 0, empleados: 0, clientes: 0};
+       let x;
       let data  = snapshot.forEach((element : any) => {
-        // console.log(element.val());
         x = element.val();
+        console.log(element.val());
         
         let llave = element.key
-
+        console.log(llave);
         var expresionRegular = /\s*_\s*/;
         var resultado = llave.split(expresionRegular);
-        // console.log(resultado[0]);
         let date = new Date();
         let mes = date.getMonth()>10 ? (date.getMonth()+1 ): "0"+(date.getMonth()+1);
-        // console.log("fecha---");
+
         // let datee = date.getDate() + "-" + mes + "-" + date.getFullYear();
          let datee = 20 + "-" + mes + "-" + date.getFullYear();
-        // console.log(fecha);
 
-        // console.log(llave);
         if(resultado[0] == datee)
         {
-          this.total++;
-          x.Empleado == 1 ? this.empleados++ : this.clientes++; 
-          console.log(x);
+          if(x.ingreso = 1){
+            x.Empleado == 1 ? this.entradas.empleados++ : this.entradas.clientes++;
+            this.entradas.total++;
+          }
+          else{
+            x.Empleado == 1 ? this.salidas.empleados++ : this.salidas.clientes++;
+            this.salidas.total++;
+          }
+
           this.items.push(x);
         }
 
       });
-      
-      console.log("total",this.total);
-      console.log("empleados",this.empleados);
-      console.log("clientes",this.clientes);
-     
     });
 
   }

@@ -1,0 +1,69 @@
+<form [formGroup]="formCliente">
+  <table>
+    <thead>
+      <tr>
+        <th>Tarjeta</th>
+        <th>Id</th>
+        <th>Direccion</th>
+        <th>Email</th>
+        <th>Fecha Nacimiento</th>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <select formControlName="tarjeta">
+            <option value="">Selecione</option>
+            <option *ngFor="let f of Tarjetas" [value]="f">{{f}}</option>
+          </select>
+        </td>
+        <td> <input type="text" formControlName="id"> </td>
+        <td> <input type="text" formControlName="direccion"> </td>
+        <td> <input type="text" formControlName="email"> </td>
+        <td> <input type="text" formControlName="fechaNacimiento"> </td>
+        <td> <input type="text" formControlName="nombre"> </td>
+        <td> <input type="text" formControlName="telefono"> </td>
+        <td> <input type="text" formControlName="tipoDocumento"> </td>
+        <td>
+          <button type="submit" (click)="guardar()">Agregar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+
+<!-- <form [formGroup]="formCliente">
+    
+    <select formControlName="tarjeta">
+        <option value="">Selecione</option>
+        <option *ngFor="let f of Tarjetas" [value]="f">{{f}}</option>
+    </select>
+
+    <label for="">id</label>
+   
+
+    <label for="">direccion</label>
+    <input type="text" formControlName="direccion">
+
+    <label for="">email</label>
+    <input type="text" formControlName="email">
+
+    <label for="">fecha nacimiento</label>
+    <input type="date" formControlName="fechaNacimiento">
+
+    <label for="">nombre</label>
+    <input type="text" formControlName="nombre">
+
+    <label for="">telefono</label>
+    <input type="text" formControlName="telefono">
+
+    <label for="">Tipo Documento</label>
+    <input type="text" formControlName="tipoDocumento">
+
+    <button type="button" (click)="guardar()">Enviar</button>
+</form> -->
