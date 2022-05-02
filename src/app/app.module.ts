@@ -19,6 +19,7 @@ import { getAuth } from 'firebase/auth';
 import { EmpleadoComponent } from './empleado/empleado.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
+import { MenuComponent } from './menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { TarjetaComponent } from './tarjeta/tarjeta.component';
     EmpleadoComponent,
     ClienteComponent,
     TarjetaComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,  
