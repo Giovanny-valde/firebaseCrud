@@ -1,0 +1,12 @@
+<div class="background">
+  <div class="login-container">
+    <div class="form-container">
+      <h1>Login</h1>
+      <button class="mat-raised-button" (click)="loginWithGoogle()">
+        Sign In with Google
+      </button>
+      <h5>Or sign in with your email</h5>
+      <login-form (formData)="login($event)"  crear="si" ></login-form>
+    </div>
+  </div>
+</div>

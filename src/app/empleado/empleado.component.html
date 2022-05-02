@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/registro']" >registro</a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" (click)="logout()">Log out</a> -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+      <h1>EMPLEADO</h1>
+    <form [formGroup]="formEmpleado">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tarjeta</th>
+            <th>Numero Identificacion</th>
+            <th>Direccion</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <select formControlName="tarjeta" class="form-select">
+                <option value="">Selecionea</option>
+                <option *ngFor="let f of Tarjetas" [value]="f.key">{{f.Id}}</option>
+              </select>
+            </td>
+            <td> <input type="text" formControlName="id" class="form-control"> </td>
+            <td> <input type="text" formControlName="direccion" class="form-control"> </td>
+            <td> <input type="text" formControlName="email" class="form-control"> </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table ">
+  
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <input type="text" formControlName="nombre" class="form-control"> </td>
+            <td> <input type="text" formControlName="telefono" class="form-control"> </td>
+            <td>
+              <select formControlName="tipoDocumento" class="form-select">
+                <option value="">Selecione</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CC">Cedula de Ciudadania</option>
+                <option value="PA">Pasaporte</option>
+                <option value="CE">Cedula de Extranjeria</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <td>
+        <button type="submit" (click)="guardar()">Agregar</button>
+      </td>
+    </form>
+    <br>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+            <th>Identificacion</th>
+            <th>Direccion</th>
+            <th>Email</th>
+            <th>Nombre</th>
+          <th>Tarjeta</th>
+          <th>Telefono</th>
+          <th>Tipo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of Empleado">
+            <td>{{empleado?.key}}</td>
+            <td>{{empleado?.Direccion}}</td>
+            <td>{{empleado?.Email}}</td>
+            <td>{{empleado?.Nombre}}</td>
+            <td>{{empleado?.Tarjeta}}</td>
+            <td>{{empleado?.Telefono}}</td>
+            <td>{{empleado?.TipoDocumento}}</td>
+            <td>
+                <button (click)="obtener(empleado)">Seleccionar</button>
+                <button (click)="eliminar(empleado)">Eliminar</button>
+            </td>
+        </tr>
+    </table>
+  </div>

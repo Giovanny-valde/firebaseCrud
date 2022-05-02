@@ -3,8 +3,6 @@ import { remove } from '@angular/fire/database';
 import { Firestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { child, getDatabase, push, ref, set, update } from 'firebase/database';
-import { Modelo } from 'src/app/modelo/modelo';
-import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
   selector: 'app-unit-funcion',
@@ -15,24 +13,24 @@ export class UnitFuncionComponent implements OnInit {
 
 
   product : any ; 
-  constructor(dbs : Firestore,public service : ServiceService) { }
+  constructor(dbs : Firestore) { }
 
   ngOnInit(): void {
-    this.resetForm();
+    // this.resetForm();
     // this.service.select;
   }
 
   
   onSubmit(productForm: NgForm)
   {
-    let item : Modelo = productForm.value;
+    let item  = productForm.value;
     const db = getDatabase();
         set(ref(db, 'UsersData/LCKSCzPK0TRN1LrXx8V28iQdJYz1/' + item.id), {
           RFID : item.RFID,
           Fecha : item.Fecha,
           Luz : item.Luz
         });
-        this.resetForm(productForm);
+        // this.resetForm(productForm);
   }
 
 
@@ -42,11 +40,11 @@ export class UnitFuncionComponent implements OnInit {
      remove(ref(db, 'UsersData/LCKSCzPK0TRN1LrXx8V28iQdJYz1/' + item.value.id));
   }
 
-  resetForm(productForm?: NgForm)
-  {
-    if(productForm != null)
-      productForm.reset();
-      this.service.select = new Modelo();
-  }
+  // resetForm(productForm?: NgForm)
+  // {
+  //   if(productForm != null)
+  //     productForm.reset();
+  //     this.service.select = new Modelo();
+  // }
 
 }

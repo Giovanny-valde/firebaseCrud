@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/registro']" >registro</a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" (click)="logout()">Log out</a> -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+      <h1>EMPLEADO</h1>
+    <form [formGroup]="formTarjeta">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tarjeta</th>
+            <th>Crono</th>
+            <th>Empleado</th>
+            <th>Fraccion de Tiempo</th>
+            <th>Ingreso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+                <input type="text" formControlName="tarjeta" class="form-control">
+            </td>
+            <td>
+                <input type="text" formControlName="crono" class="form-control">
+            </td>
+            <td>
+                <input type="text" formControlName="empleado" class="form-control">
+            </td>
+            <td>
+                <input type="text" formControlName="fraccionTiempo" class="form-control">
+            </td>
+            <td>
+                <input type="text" formControlName="ingreso" class="form-control">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <td>
+        <button type="submit" (click)="guardar()">Agregar</button>
+      </td>
+    </form>
+    <br>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+            <th>Tarjeta</th>
+            <th>Crono</th>
+            <th>Empleado</th>
+            <th>Fraccion de Tiempo</th>
+            <th>Ingreso</th>
+            <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarjeta of Tarjeta">
+            <td>{{tarjeta?.key}}</td>
+            <td>{{tarjeta?.Crono}}</td>
+            <td>{{tarjeta?.Empleado}}</td>
+            <td>{{tarjeta?.FraccionTiempo}}</td>
+            <td>{{tarjeta?.Ingreso}}</td>
+
+            <td>
+                <button (click)="obtener(tarjeta)">Seleccionar</button>
+                <button (click)="eliminar(tarjeta)">Eliminar</button>
+            </td>
+        </tr>
+    </table>
+  </div>

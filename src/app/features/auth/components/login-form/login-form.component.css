@@ -1,0 +1,24 @@
+button {
+  background-color: #7b1fa2;
+  border-radius: 20px;
+  color: #fff;
+  padding: 0 50px;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 200px;
+  width: 300px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* input {
+  width: 100%;
+  background-color: bisque;
+} */
