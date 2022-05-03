@@ -71,11 +71,11 @@ export class TarjetaComponent implements OnInit {
 
     //AGREGAR Empleado
     set(ref(db, 'UsersData/Tarjetas/' + data.tarjeta), {
-      Crono : "",
-      Empleado : 0,
-      FraccionTiempo : 1,
+      Crono : data.crono,
+      Empleado : data.empleado,
+      FraccionTiempo : data.fraccionTiempo,
       Id : data.tarjeta,
-      Ingreso : 0,
+      Ingreso : data.ingreso,
 
     });
   }

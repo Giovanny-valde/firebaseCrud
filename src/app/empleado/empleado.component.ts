@@ -78,13 +78,13 @@ export class EmpleadoComponent implements OnInit {
   obtener(data : any){
     console.log(data)
     this.formEmpleado.setValue({
-      id: data.key,
-      direccion: data.Direccion,
-      email: data.Email,
-      nombre: data.Nombre,
-      telefono: data.Telefono,
-      tipoDocumento: data.TipoDocumento,
-      tarjeta: data.Tarjeta,
+      id: data?.key,
+      direccion: data?.Direccion,
+      email: data?.Email,
+      nombre: data?.Nombre,
+      telefono: data?.Telefono,
+      tipoDocumento: data?.TipoDocumento,
+      tarjeta: data?.Tarjeta,
     });
   }
     // this.formEmpleado.controls['id'].setValue(data.id);
@@ -102,6 +102,11 @@ export class EmpleadoComponent implements OnInit {
       Telefono: data.telefono,
       TipoDocumento: data.tipoDocumento,
     });
+    this.obtener(null);
+  }
+
+  resetform(){
+    this.formEmpleado;
   }
 
   eliminar(item: any) {

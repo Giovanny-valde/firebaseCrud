@@ -28,9 +28,12 @@ const routes: Routes = [
     path: 'dashboard', component:FuncionComponent , pathMatch: 'full' ,
     ...canActivate(redirectUnauthorizedToLogin)
   },
-  { path:"empleado", component:EmpleadoComponent},
-  { path:"cliente", component:ClienteComponent},
-  { path: 'tarjeta', component: TarjetaComponent },
+  { path:"empleado", component:EmpleadoComponent,
+    ...canActivate(redirectUnauthorizedToLogin)},
+  { path:"cliente", component:ClienteComponent,
+    ...canActivate(redirectUnauthorizedToLogin)},
+  { path: 'tarjeta', component: TarjetaComponent,
+    ...canActivate(redirectUnauthorizedToLogin)},
 
 
 
