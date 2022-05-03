@@ -1,39 +1,65 @@
-.circulo {
-    margin:auto;
-    text-align: center;
-    width: 100px;
-    height: 120px;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
+input{
+    width: 20%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* Circulos verde*/
+.circuloU {
+    width: 230px;
+    height: 230px;
+    border: 25px solid lime;
     border-radius: 50%;
-    /* background: #5cb85c; */
-    float: left;
+    -webkit-box-shadow: 10px 10px 10px 0px rgba(60, 60, 60, 0.75);
+  }
+
+  /* Circulos morado*/
+.circuloD {
+  width: 230px;
+  height: 230px;
+  border: 25px solid rgb(211, 69, 243);
+  border-radius: 50%;
+  -webkit-box-shadow: 10px 10px 10px 0px rgba(50, 50, 50, 0.75);
 }
-h1 {
-    margin:auto;
-    margin-top: 15%;
-    text-align: center;
-    width: 60px;
-    height: 80px;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
+
+  
+
+ /* logo*/
+  img {
+    
+   }
+    
+
+   div.containerin {
+    width: 96%;
+    max-width: 960px;
+    margin: 0 auto;
+    }
+    img {
+    width: 20%;
+    height: auto;
+    position:absolute;
+    top: 200px;
+    left:100px;
     border-radius: 50%;
-    background-color: aliceblue;
-}
+    margin: 200px;
+    border:2px solid #fff;
+    }
+  
 
-.total{
-    background-color: chartreuse;
-}
-
-.cliente{
-    background-color:blue;
-}
-
-.empleado{
-    background-color: orange;
-}
-
-
-td{
-    margin: auto;
-}
+/* Cards */
+  .container-as  {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width:50vw;
+    margin:auto;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+  }
