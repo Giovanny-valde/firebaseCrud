@@ -29,12 +29,6 @@ export class FuncionComponent implements OnInit {
 
   }
 
-  // updateItem(item: Modelo) {
-  //   this.db.select = Object.assign({}, item);
-  //   this.db.update();
-  // }
-
-  
   remove(item: any) {
     //  console.log("remove == ",item.hora);
       const db = getDatabase();
@@ -60,7 +54,7 @@ export class FuncionComponent implements OnInit {
        this.entradas = {total: 0, empleados: 0, clientes: 0};
        this.salidas = {total: 0, empleados: 0, clientes: 0};
        let x;
-      let data  = snapshot.forEach((element : any) => {
+      snapshot.forEach((element : any) => {
         x = element.val();
         let llave = element.key
         var expresionRegular = /\s*_\s*/;
@@ -68,7 +62,7 @@ export class FuncionComponent implements OnInit {
         
         let dateNotFormat: any  = this.fecha
         let fecha = dateNotFormat.split( /\s*-\s*/)
-        this.fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+        this.fecha = fecha[0] + "-" + fecha[1] + "-" + fecha[2];
         let datee = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
 
         if(resultado[0] == datee)
@@ -99,18 +93,17 @@ export class FuncionComponent implements OnInit {
        this.salidas = {total: 0, empleados: 0, clientes: 0};
        let x;
        let date = new Date();
+       let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
        let mes = date.getMonth()>10 ? (date.getMonth()+1 ): "0"+(date.getMonth()+1);
        this.fecha = date.getDate() + "-" +  mes + "-" + date.getFullYear();
-      let data  = snapshot.forEach((element : any) => {
+      snapshot.forEach((element : any) => {
         x = element.val();
-        
         let llave = element.key
         
         var expresionRegular = /\s*_\s*/;
         var resultado = llave.split(expresionRegular);
 
-        let datee = date.getDate() + "-" + mes + "-" + date.getFullYear();
-        //  let datee = 28 + "-" + mes + "-" + date.getFullYear();
+        let datee = day + "-" + mes + "-" + date.getFullYear();
         if(resultado[0] == datee)
         {
           if(x.Ingreso == 1){
@@ -128,16 +121,5 @@ export class FuncionComponent implements OnInit {
       });
     });
   }
-  
-    // this.db.getProducts().snapshotChanges().subscribe((data : any) => {
-    //   data.forEach((element : any) => {
-    //     console.log("element == ",element);
-    //     this.items.push(element);
-    //   });
-    // });
-    // this.item$.subscribe(data => {
-    //   console.log(data);
-    // });
-  
 
 }
