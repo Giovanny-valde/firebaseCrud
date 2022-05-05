@@ -29,6 +29,7 @@ export class HistorialComponent implements OnInit {
   Tarjetas: any[] = [];
   Empleado: any[] = [];
   titulo  = "";
+  dabase  = getDatabase();
   constructor(dbs: Firestore, private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -44,16 +45,16 @@ export class HistorialComponent implements OnInit {
 
     console.log(this.fecha);
     //OBTENER TINGRESOS
-    this.ObtenerIngresos(daba);
+    this.ObtenerIngresos();
 
 
 
   }
 
-  public ObtenerIngresos(daba: any) {
-    const starCountRef = ref(daba, 'UsersData/Ingresos/');
+  public ObtenerIngresos() {
+    const starCountRef = ref(this.dabase, 'UsersData/Ingresos/');
     onValue(starCountRef, (snapshot) => {
-      this.Empleados(daba);
+      this.Empleados(this.dabase);
       this.Tarjetas = [];
 
       let x;
