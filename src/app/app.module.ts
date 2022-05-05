@@ -20,6 +20,7 @@ import { EmpleadoComponent } from './empleado/empleado.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { MenuComponent } from './menu/menu.component';
+import { HistorialComponent } from './historial/historial.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { MenuComponent } from './menu/menu.component';
     ClienteComponent,
     TarjetaComponent,
     MenuComponent,
+    HistorialComponent,
   ],
   imports: [
     BrowserModule,  

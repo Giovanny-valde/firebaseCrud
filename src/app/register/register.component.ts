@@ -65,8 +65,8 @@ export class RegisterComponent implements OnInit {
         this.Tarjetas.push(dato);
       });
 
-      console.log("TARJETAS")
-      console.log(this.Tarjetas)
+      // console.log("TARJETAS")
+      // console.log(this.Tarjetas)
     });
   }
 
@@ -83,8 +83,8 @@ export class RegisterComponent implements OnInit {
         };
         this.Clientes.push(dato);
       });
-      console.log("CLIENTES")
-      console.log(this.Clientes)
+      // console.log("CLIENTES")
+      // console.log(this.Clientes)
       this.ObtenerClienteDeCaja();
     });
 
@@ -104,8 +104,8 @@ export class RegisterComponent implements OnInit {
         };
         this.Caja.push(dato);
       });
-      console.log("CAJA")
-      console.log(this.Caja)
+      // console.log("CAJA")
+      // console.log(this.Caja)
       this.ObtenerClienteDeCaja();
     });
   }
@@ -124,7 +124,6 @@ export class RegisterComponent implements OnInit {
         }
       }
     }
-    console.log(this.ClientesEnCaja)
   }
 
   public guardar() {
@@ -150,9 +149,9 @@ export class RegisterComponent implements OnInit {
     })
 
     //CAMBIAR ESTADO DE TARJETA
-    //
+     let fechafraccionada  = this.fechaMasFraccion(data.fraccionTiempo);
     set(ref(db, 'UsersData/Tarjetas/' + data.tarjeta), {
-      Crono : "1",
+      Crono : "fechafraccionada",
       Empleado: "0",
       FraccionTiempo: data.fraccionTiempo,
       Id : data.tarjeta,
@@ -160,7 +159,20 @@ export class RegisterComponent implements OnInit {
     })
 
     this.formCliente.reset();
+  }
 
+  fechaMasFraccion(fraccion : string){
+    let date = new Date();
+    let addtime = parseInt(fraccion) * 1800 ;
+    addtime = addtime + 300;
+    date.setSeconds(addtime)
+    let hour = date.getHours() > 10 ? (date.getHours()) : "0" + (date.getHours());
+    let sec = date.getSeconds() > 10 ? (date.getSeconds()) : "0" + (date.getSeconds());
+    let min = date.getMinutes() > 10 ? (date.getMinutes()) : "0" + (date.getMinutes());
+      
+    let datee = hour + ":" + min + ":" + sec
+    alert(datee)
+    return datee
   }
 
   public ObtenerFecha() {
@@ -220,3 +232,8 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+
+// //fecha , tarjeta ,(cliente o empleado), (ingreo o salio == estado) ,solo hora
+
+//fecha , tarjeta , (ingreo o salio == estado) , hora   CLIENTE
+//fecha , tarjeta , (ingreo o salio == estado) , hora  , nombre empleado EMPLEADO

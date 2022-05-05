@@ -10,6 +10,7 @@ import {
 import { EmpleadoComponent } from './empleado/empleado.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
+import { HistorialComponent } from './historial/historial.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -34,7 +35,9 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'tarjeta', component: TarjetaComponent,
     ...canActivate(redirectUnauthorizedToLogin)},
-
+  { path: 'historial', component: HistorialComponent,
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
 
 
 ];

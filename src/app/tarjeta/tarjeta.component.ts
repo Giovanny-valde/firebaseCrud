@@ -51,7 +51,6 @@ export class TarjetaComponent implements OnInit {
         this.Tarjeta.push(dato);
       });
     });
-    console.log(this.Tarjeta)
   }
 
   obtener(data : any){

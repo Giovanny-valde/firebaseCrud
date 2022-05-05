@@ -49,7 +49,6 @@ export class EmpleadoComponent implements OnInit {
       let x;
       let data = snapshot.forEach((element: any) => {
         x = element.val();
-        console.log(x)
         let dato = {
           key: element.key,
           ...x

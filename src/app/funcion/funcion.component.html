@@ -29,7 +29,7 @@
 <span class="container">
 <input type="date" [(ngModel)]="fecha"  (change)="datosByFecha()" class="form-control">
 <button type="button"(click)="datosByFechaHoy()" class="btn btn-primary" > Hoy </button>
-fecha = {{fecha}}
+<!-- fecha = {{fecha}} -->
 </span>
 
 <div class="container-as">
@@ -37,16 +37,18 @@ fecha = {{fecha}}
     <div class="row align-items-center">
       <div class="col-lg text-end justify-content-end ms-auto">
       </div>
-      <div class="col-lg justify-content-start">
+      <div class="col-lg justify-content-start" (click)="alerta('empleado')">
         <h1>Empleados</h1>
         <div class="circuloU align-items-center">
-          <h1 style="top:35%;position:relative;margin-left:40%">{{entradas.empleados}}</h1>
+          <h1 style="top:35%;position:relative;margin-left:40%" >{{entradas.empleados}}</h1>
+          <!-- {{salidas.empleados}} -->
         </div>
       </div>
-      <div class="col-lg text-start justify-content-start me-auto">
+      <div class="col-lg text-start justify-content-start me-auto " (click)="alerta('cliente')" > 
         <h1>Clientes</h1>
         <div class="circuloD align-items-center">
           <h1 style="top:35%;position:relative;margin-left:40%">{{entradas.clientes}}</h1>
+          <!-- {{salidas.clientes}} -->
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import {  Firestore } from '@angular/fire/firestore';
 import {  Observable } from 'rxjs';
 // import { Modelo } from '../modelo/modelo';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 // import { get } from 'http';
 
 @Component({
@@ -19,7 +20,7 @@ export class FuncionComponent implements OnInit {
   // total : number = 0;
   entradas: {total: number, empleados: number, clientes: number} = {total: 0, empleados: 0, clientes: 0};
   salidas: {total: number, empleados: number, clientes: number} = {total: 0, empleados: 0, clientes: 0};
-  constructor( dbs : Firestore ,private fb : FormBuilder ) {
+  constructor( dbs : Firestore ,private fb : FormBuilder ,private  router : Router ) {
 
   }
   
@@ -44,6 +45,11 @@ export class FuncionComponent implements OnInit {
       //  remove(ref(db, 'as/aaasta/' + item.value.hora));
   }
 
+  alerta(dato : any){
+    localStorage.setItem("origen" , dato);
+    localStorage.setItem("fecha" , this.fecha);
+    this.router.navigate(['/historial']);
+  }
 
   datosByFecha() {
     const daba = getDatabase();   
@@ -54,15 +60,15 @@ export class FuncionComponent implements OnInit {
        this.entradas = {total: 0, empleados: 0, clientes: 0};
        this.salidas = {total: 0, empleados: 0, clientes: 0};
        let x;
+       
+       let dateNotFormat: any  = this.fecha
+       let fecha = dateNotFormat.split( /\s*-\s*/)
+       this.fecha = fecha[0] + "-" + fecha[1] + "-" + fecha[2];
       snapshot.forEach((element : any) => {
         x = element.val();
         let llave = element.key
         var expresionRegular = /\s*_\s*/;
         var resultado = llave.split(expresionRegular);
-        
-        let dateNotFormat: any  = this.fecha
-        let fecha = dateNotFormat.split( /\s*-\s*/)
-        this.fecha = fecha[0] + "-" + fecha[1] + "-" + fecha[2];
         let datee = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
 
         if(resultado[0] == datee)
@@ -95,7 +101,8 @@ export class FuncionComponent implements OnInit {
        let date = new Date();
        let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
        let mes = date.getMonth()>10 ? (date.getMonth()+1 ): "0"+(date.getMonth()+1);
-       this.fecha = date.getDate() + "-" +  mes + "-" + date.getFullYear();
+      //  this.fecha = day + "-" +  mes + "-" + date.getFullYear();
+       this.fecha= date.getFullYear() + "-" + mes + "-" + day;
       snapshot.forEach((element : any) => {
         x = element.val();
         let llave = element.key
