@@ -33,9 +33,10 @@
         <thead>
           <tr>
             <th>Tarjeta</th>
+            <th>Tipo Identificacion</th>
             <th>Numero Identificacion</th>
-            <th>Direccion</th>
-            <th>Email</th>
+            <th>Nombre</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -46,25 +47,6 @@
                 <option *ngFor="let f of Tarjetas" [value]="f.key">{{f.Id}}</option>
               </select>
             </td>
-            <td> <input type="text" formControlName="id" class="form-control"> </td>
-            <td> <input type="text" formControlName="direccion" class="form-control"> </td>
-            <td> <input type="text" formControlName="email" class="form-control"> </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table ">
-  
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Telefono</th>
-            <th>Tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td> <input type="text" formControlName="nombre" class="form-control"> </td>
-            <td> <input type="text" formControlName="telefono" class="form-control"> </td>
             <td>
               <select formControlName="tipoDocumento" class="form-select">
                 <option value="">Selecione</option>
@@ -74,11 +56,32 @@
                 <option value="CE">Cedula de Extranjeria</option>
               </select>
             </td>
+            <td> <input type="number" formControlName="id" class="form-control"> </td>
+            <td> <input type="text" formControlName="nombre" class="form-control"> </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table ">
+  
+        <thead>
+          <tr>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+            <td> <input type="number" formControlName="telefono" class="form-control"> </td>
+            <td> <input type="text" formControlName="direccion" class="form-control"> </td>
+            <td> <input type="text" formControlName="email" class="form-control"> </td>
+            
           </tr>
         </tbody>
       </table>
       <td>
-        <button type="submit" (click)="guardar()">Agregar</button>
+        <button type="submit" (click)="guardar()" [disabled]="formEmpleado.invalid"  class="btn btn-success">Agregar</button>
       </td>
     </form>
     <br>

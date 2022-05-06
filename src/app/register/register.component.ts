@@ -8,6 +8,7 @@ import {
 import {
   FormBuilder,
   FormGroup,
+  Validators,
 } from '@angular/forms';
 import {
   getDatabase,
@@ -65,8 +66,8 @@ export class RegisterComponent implements OnInit {
         this.Tarjetas.push(dato);
       });
 
-      // console.log("TARJETAS")
-      // console.log(this.Tarjetas)
+      console.log("TARJETAS")
+      console.log(this.Tarjetas)
     });
   }
 
@@ -75,16 +76,18 @@ export class RegisterComponent implements OnInit {
     const starCountRef2 = ref(daba, 'UsersData/Clientes/');
     onValue(starCountRef2, (snapshot) => {
       this.Clientes = [];
+      let x;
       let data = snapshot.forEach((element: any) => {
-        let x = element.val();
+         x = element.val();
+        console.log(element.key)
         let dato = {
           key: element.key,
-          ...x
+          ... x
         };
         this.Clientes.push(dato);
       });
-      // console.log("CLIENTES")
-      // console.log(this.Clientes)
+      console.log("CLIENTES")
+      console.log(this.Clientes)
       this.ObtenerClienteDeCaja();
     });
 
@@ -104,8 +107,8 @@ export class RegisterComponent implements OnInit {
         };
         this.Caja.push(dato);
       });
-      // console.log("CAJA")
-      // console.log(this.Caja)
+      console.log("CAJA")
+      console.log(this.Caja)
       this.ObtenerClienteDeCaja();
     });
   }
@@ -124,6 +127,10 @@ export class RegisterComponent implements OnInit {
         }
       }
     }
+
+    console.log("CLIENTES EN CAJA")
+    console.log(this.ClientesEnCaja)
+
   }
 
   public guardar() {
@@ -188,15 +195,15 @@ export class RegisterComponent implements OnInit {
 
   public crearFormulario() {
     this.formCliente = this.fb.group({
-      id: [''],
-      direccion: [''],
-      email: [''],
-      fechaNacimiento: [''],
-      nombre: [''],
-      telefono: [''],
-      tipoDocumento: [''],
-      tarjeta: [''],
-      fraccionTiempo : [''],
+      id: ['',[Validators.required]],
+      direccion: ['',[Validators.required]],
+      email: ['',[Validators.required]],
+      fechaNacimiento: ['',[Validators.required]],
+      nombre: ['',[Validators.required]],
+      telefono: ['',[Validators.required]],
+      tipoDocumento: ['',[Validators.required]],
+      tarjeta: ['',[Validators.required]],
+      fraccionTiempo : ['',[Validators.required]],
     });
   }
 

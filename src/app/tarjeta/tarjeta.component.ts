@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getDatabase, onValue, ref, remove, set } from '@angular/fire/database';
 import { Firestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tarjeta',
@@ -26,11 +26,11 @@ export class TarjetaComponent implements OnInit {
 
   public crearFormulario() {
     this.formTarjeta = this.fb.group({
-      tarjeta: [''],
-      crono : [''],
-      empleado : [''],
-      fraccionTiempo : [''],
-      ingreso : [''],
+      tarjeta: ['' ,[Validators.required]],
+      crono : ['' ,[Validators.required] ],
+      empleado : ['' ,[Validators.required]],
+      fraccionTiempo : ['' ,[Validators.required]],
+      ingreso : ['' ,[Validators.required]],
 
     });
   }

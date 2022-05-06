@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getDatabase, onValue, remove, set } from '@angular/fire/database';
 import { Firestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ref } from 'firebase/database';
 
 @Component({
@@ -32,13 +32,13 @@ export class EmpleadoComponent implements OnInit {
 
   public crearFormulario() {
     this.formEmpleado = this.fb.group({
-      id: [''],
-      direccion: [''],
-      email: [''],
-      nombre: [''],
-      telefono: [''],
-      tipoDocumento: [''],
-      tarjeta: [''],
+      id: ['' , Validators.required],
+      direccion: ['' , Validators.required],
+      email: ['' , Validators.required],
+      nombre: ['' , Validators.required],
+      telefono: ['' , Validators.required],
+      tipoDocumento: [''  , Validators.required],
+      tarjeta: ['' , Validators.required],
     });
   }
 

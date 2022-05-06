@@ -42,25 +42,30 @@
         <tbody>
           <tr>
             <td>
-                <input type="text" formControlName="tarjeta" class="form-control">
+                <input type="number" formControlName="tarjeta" class="form-control">
             </td>
             <td>
-                <input type="text" formControlName="crono" class="form-control">
+                <input type="date" formControlName="crono" class="form-control">
             </td>
             <td>
-                <input type="text" formControlName="empleado" class="form-control">
+                <input type="number" formControlName="empleado" class="form-control">
             </td>
             <td>
-                <input type="text" formControlName="fraccionTiempo" class="form-control">
+              <select formControlName="fraccionTiempo" class="form-select">
+                <option value="">Selecione</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </td>
             <td>
-                <input type="text" formControlName="ingreso" class="form-control">
+                <input type="number" formControlName="ingreso" class="form-control">
             </td>
           </tr>
         </tbody>
       </table>
       <td>
-        <button type="submit" (click)="guardar()">Agregar</button>
+        <button type="submit" (click)="guardar()" [disabled]="formTarjeta.invalid" class="btn btn-success" >Agregar</button>
       </td>
     </form>
     <br>

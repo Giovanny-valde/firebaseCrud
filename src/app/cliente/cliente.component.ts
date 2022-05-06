@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getDatabase, onValue, ref, remove, set } from '@angular/fire/database';
 import { Firestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cliente',
@@ -26,23 +26,24 @@ export class ClienteComponent implements OnInit {
 
   public crearFormulario() {
     this.formCliente = this.fb.group({
-      id: [''],
-      direccion: [''],
-      email: [''],
-      nombre: [''],
-      telefono: [''],
-      tipoDocumento: [''],
+      id: ['' , Validators.required],
+      direccion: ['' , Validators.required],
+      email: ['' , Validators.required],
+      nombre: ['' , Validators.required],
+      telefono: ['' , Validators.required], 
+      tipoDocumento: ['' , Validators.required],
     });
   }
 
 
   public ObtenerCliente(daba: any) {
-    const starCountRef = ref(daba, 'UsersData/Empleado/');
+    const starCountRef = ref(daba, 'UsersData/Clientes/');
     onValue(starCountRef, (snapshot) => {
       this.Clientes = [];
       let x;
       let data = snapshot.forEach((element: any) => {
         x = element.val();
+        console.log(x);
         let dato = {
           key: element.key,
           ...x
