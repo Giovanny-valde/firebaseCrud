@@ -88,25 +88,25 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-            <th>Identificacion</th>
-            <th>Direccion</th>
-            <th>Email</th>
-            <th>Nombre</th>
           <th>Tarjeta</th>
+          <th>Tipo Identificacion</th>
+          <th>Numero Identificacion</th>
+          <th>Nombre</th>
           <th>Telefono</th>
-          <th>Tipo</th>
+          <th>Direccion</th>
+          <th>Email</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let empleado of Empleado">
+          <td>{{empleado?.Tarjeta}}</td>
+          <td>{{empleado?.TipoDocumento}}</td>
             <td>{{empleado?.key}}</td>
+            <td>{{empleado?.Nombre}}</td>
+            <td>{{empleado?.Telefono}}</td>
             <td>{{empleado?.Direccion}}</td>
             <td>{{empleado?.Email}}</td>
-            <td>{{empleado?.Nombre}}</td>
-            <td>{{empleado?.Tarjeta}}</td>
-            <td>{{empleado?.Telefono}}</td>
-            <td>{{empleado?.TipoDocumento}}</td>
             <td>
                 <button (click)="obtener(empleado)">Seleccionar</button>
                 <button (click)="eliminar(empleado)">Eliminar</button>
