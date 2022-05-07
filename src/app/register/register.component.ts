@@ -158,7 +158,7 @@ export class RegisterComponent implements OnInit {
     //CAMBIAR ESTADO DE TARJETA
      let fechafraccionada  = this.fechaMasFraccion(data.fraccionTiempo);
     set(ref(db, 'UsersData/Tarjetas/' + data.tarjeta), {
-      Crono : "fechafraccionada",
+      Crono : fechafraccionada,
       Empleado: "0",
       FraccionTiempo: data.fraccionTiempo,
       Id : data.tarjeta,
